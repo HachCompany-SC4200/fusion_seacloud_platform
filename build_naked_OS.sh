@@ -1,20 +1,23 @@
-# from .repo/manifests, go back to base folder fusion_seacloud_platform
-cd ../..
+if [ $# -ne 1 ]
+then
+	echo "Usage: $0 <image name>"
+	exit 1
+fi
 
-# Remove build and deploy folders to force a full rebuild
-rm -rf build deploy
+# From .repo/manifests, go back to base folder fusion_seacloud_platform
+pushd ../.. > /dev/null
 
-#export environment variables
+# Export environment variables
 source ./export
 
-# Move yocto package download folder into /home/fusion/bamboo-agent-home/xml-data/build-dir so that it is shared between plan
-sed -i '/^DL_DIR.*/c\DL_DIR ?= "${TOPDIR}/../../../../../yocto-downloads"' conf/local.conf
+# Launch bitbake to build OS image
+time bitbake $1
 
-#to avoid "the basehash value changed" warning
-rm -rf out-glibc/cache
+popd > /dev/null
 
-#cleaning
-bitbake -c cleansstate console-seacloud-image
+GIT_REVISION_FILE=../../deploy/images/os_commit
+echo "Save current git SHA1 and branch into ${GIT_REVISION_FILE}"
+git rev-parse HEAD > ${GIT_REVISION_FILE}
+git rev-parse --abbrev-ref HEAD >> ${GIT_REVISION_FILE}
 
-#build OS
-bitbake console-seacloud-image
+./update_download_mirror.sh
