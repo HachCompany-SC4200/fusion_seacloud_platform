@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote alias="repo" fetch="http://github.com/Angstrom-distribution" name="githa"/>
+  <remote alias="repo" fetch="http://github.com/Freescale" name="githf"/>
+  <remote alias="repo" fetch="http://github.com/OSSystems" name="githo"/>
+  <remote alias="repo" fetch="http://github.com/meta-qt5" name="githq"/>
+  <remote alias="repo" fetch="http://github.com/morphis" name="giths"/>
+  <remote alias="repo" fetch="http://github.com/watatuki" name="githt"/>
+  <remote alias="repo" fetch="ssh://git@stash.hach.ewqg.com:7999/fcfw" name="hach"/>
+  <remote alias="repo" fetch="http://git.linaro.org/git-ro/openembedded" name="linaro"/>
+  <remote alias="repo" fetch="http://github.com/openembedded" name="oe"/>
+  <remote alias="repo" fetch="http://git.toradex.com" name="tdx"/>
+  <remote alias="repo" fetch="https://git.yoctoproject.org/git" name="yocto"/>
+  
+  <default sync-j="4"/>
+  
+  <project name="bitbake.git" path="layers/openembedded-core/bitbake" remote="oe" revision="bdf7a362ecdafd47f309b7a21feac4b94624f287"/>
+  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="69d46e04577a23e670537aa785f80146c6973f99">
+    <copyfile dest="export" src="buildconf/export"/>
+  </project>
+  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="c7028dd77a44b9c3eaca2a4668fb4b11a611bb95"/>
+  <project name="meta-angstrom.git" path="layers/meta-angstrom" remote="githa" revision="709abee819ee349dab873f6abb02c404b2c65331"/>
+  <project name="meta-browser.git" path="layers/meta-browser" remote="githo" revision="ee0d264347ca89efe73788a11f31504d1d42b716"/>
+  <project name="meta-freescale-3rdparty.git" path="layers/meta-freescale-3rdparty" remote="githf" revision="1879485e63ce369292c89b5902ff6df13509090b"/>
+  <project name="meta-freescale-distro.git" path="layers/meta-freescale-distro" remote="githf" revision="cd5c7a2539f40004f74126e9fdf08254fd9a6390"/>
+  <project name="meta-freescale.git" path="layers/meta-freescale" remote="githf" revision="fa774ad7fb797957601a8c9fee45af453fea34b7"/>
+  <project name="meta-jetson-tk1.git" path="layers/meta-jetson-tk1" remote="githt" revision="e8b87fe8da7c6fcffa37ab245f50082953cc1ee1"/>
+  <project name="meta-linaro.git" path="layers/meta-linaro" remote="linaro" revision="e5b6b4e20a489bd7f39a9053f84914e318aea199"/>
+  <project name="meta-lxde.git" path="layers/meta-lxde" remote="tdx" revision="1bd36a4d0f7e1e9fdea9c4c991188bc1dc9da421"/>
+  <project name="meta-openembedded.git" path="layers/meta-openembedded" remote="oe" revision="fe5c83312de11e80b85680ef237f8acb04b4b26e"/>
+  <project name="meta-qt4" path="layers/meta-qt4" remote="yocto" revision="2c7f8df9039be498f8a2232d1428adb7f4e5e800"/>
+  <project name="meta-qt5.git" path="layers/meta-qt5" remote="githq" revision="3601fd2c5306ac6d5d0d536e0be8cbb90da9b4c1"/>
+  <project name="meta-snappy.git" path="layers/meta-snappy" remote="giths" revision="f6df6a63756d9976bcccb5fefdbc64e5cc794c99"/>
+  <project name="meta-toradex-bsp-common.git" path="layers/meta-toradex-bsp-common" remote="tdx" revision="b128af95613557af8deaea30212e89e6316eab88"/>
+  <project name="meta-toradex-demos.git" path="layers/meta-toradex-demos" remote="tdx" revision="9776575a1a4b243f3a80de22bd16ea6a9525912d"/>
+  <project name="meta-toradex-nxp.git" path="layers/meta-toradex-nxp" remote="tdx" revision="89a17628efef01fd5af202e88d79188df08f636f"/>
+  <project name="meta-toradex-tegra.git" path="layers/meta-toradex-tegra" remote="tdx" revision="40e9d4bd596a01df7fccd305befc362a08117f9f"/>
+  <project name="openembedded-core.git" path="layers/openembedded-core" remote="oe" revision="4c353eeff45f91533f22392f129bc5a477ee5207"/>
+</manifest>

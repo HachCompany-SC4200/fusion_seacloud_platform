@@ -1,0 +1,69 @@
+Seacloud oe-core Setup
+=====================
+
+To simplify installation we provide a repo manifest which manages the different git repositories 
+and the used versions. (more on repo: http://code.google.com/p/git-repo/ )
+
+Install the repo bootstrap binary:
+
+  mkdir ~/bin
+  PATH=~/bin:$PATH
+  curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+  chmod a+x ~/bin/repo
+
+Create a directory for your oe-core setup to live in and clone the meta information.
+
+  mkdir oe-core
+  cd oe-core
+  repo init -u ssh://git@stash.hach.ewqg.com:7999/fcfw/fusion_seacloud_platform.git -b master
+  repo sync
+
+Optionally create a development branch in all git repositories
+
+  repo start mybranch --all
+
+Source the file export to setup the environment. On first invocation this also copies a sample 
+configuration to build/conf/*.conf.
+
+  . export
+
+Adapt build/conf/local.conf to your needs. At least check the variables BB_NUMBER_THREADS, 
+PARALLEL_MAKE, and MACHINE. Set MACHINE to a preferred value and when you need a different 
+one override it from the command line.
+
+For Toradex modules the following machines exist:
+
+  apalis-imx6
+  apalis-t30
+  colibri-imx6
+  colibri-imx7
+  colibri-t20
+  colibri-t30
+  colibri-vf50
+  colibri-vf-1345-v5
+
+e.g. set in local.conf
+
+  MACHINE ?= "colibri-vf-1345"
+
+and then if you want to build for Apalis T30 instead, use the following command line:
+
+  MACHINE=apalis-t30 bitbake angstrom-lxde-image
+
+More information on our developer website:
+
+  http://developer.toradex.com/software-resources/arm-family/linux/board-support-package/openembedded-(core)
+
+For info:
+To generate a manifest from what is currently checked out:
+ cd .repo/manifests
+ if you have to update your local branch: git checkout -b my-branch-name
+ repo manifest --suppress-upstream-revision -r -o default_tmp.xml
+ cp default_tmp.xml default.xml
+ cp default_tmp.xml head-default.xml 
+ rm default_tmp.xml
+ git commit -a -m 'description...'
+ git push
+ 
+
+
