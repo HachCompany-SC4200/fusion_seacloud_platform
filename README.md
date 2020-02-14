@@ -1,4 +1,4 @@
-# Seacloud oe-core setup
+# Seacloud oe-core setup for SC4200c devices
 
 ## Setup of developement environment
 ----------
@@ -36,7 +36,7 @@ Create a directory for your oe-core setup to live in and clone the meta informat
 ```bash
   mkdir oe-core
   cd oe-core
-  repo init -u ssh://git@stash.hach.ewqg.com:7999/fcfw/fusion_seacloud_platform.git -b master
+  repo init -u ssh://git@stash.hach.ewqg.com:7999/fcfw/fusion_seacloud_platform.git -b SCR1
   repo sync
 ```
 Source the file export to setup the environment. On first invocation this also copies a sample
@@ -53,7 +53,7 @@ More information on Toradex developer website:
 ------------
 Branches are created under the SeaCloud specific layers repositories(meta-seacloud and meta-seacloud-bsp).
 
-Work is done on the branches. When the work is done, the modifications on the branches are merged into the master branch.
+Work is done on the branches. When the work is done, the modifications on the branches are merged into the SCR1 branch.
 
 Then it is needed to  generate a manifest from what is currently checked out. to do so:
 ```bash
@@ -73,5 +73,11 @@ Then it is needed to  generate a manifest from what is currently checked out. to
  git push
  ```
 
+### Back to manifest revision
+To reset all the projects/layers back to the manifest revision, use the command :
+```bash
+repo sync -d
+```
+It can be useful when swapping between branches etc.
 
 

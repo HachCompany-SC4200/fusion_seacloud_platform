@@ -16,7 +16,13 @@ FW_path=${2}
 # param 2 pattern to find as a regex
 # returns the youngest tag (without ^{} suffix if it is an annoted one) that matches the pattern, as string
 function GetTagFromCommitSHA1WithPattern {
-	echo `git show-ref -d | grep "refs/tags/" | grep $1 | sed -e 's/.*refs\/tags\///' | sed 's/\^{}//g' | grep $2 | tail -1`
+	# Tags are sorted by Package version first, then by OS version and at the end by firmware version
+	# sort -t@ -k1.2,1rV -k2,2rV -k3,3rV is used to sort string like Pxx.x@yy.y@zz.z by xx.x number
+	# -t@ give the @ separator
+	# -k1.2,1rV reverse sorted as version number the first key skiping first P
+	# -k2,2rV reverse sorted as version number the second key
+	# -k3,3rV reverse sorted as version number the third key
+	echo `git show-ref -d | grep "refs/tags/" | grep $1 | sed -e 's/.*refs\/tags\///' | sed 's/\^{}//g' | grep $2 | sort -t@ -k1.2,1rV -k2,2rV -k3,3rV | head -1`
 }
 
 # Get SHA1 from tag

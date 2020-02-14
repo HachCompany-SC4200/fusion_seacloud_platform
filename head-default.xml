@@ -15,10 +15,10 @@
   <default sync-j="4"/>
   
   <project name="bitbake.git" path="layers/openembedded-core/bitbake" remote="oe" revision="bdf7a362ecdafd47f309b7a21feac4b94624f287"/>
-  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="403a3dde91848c86f2b49360d2d3262014206807">
+  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="359f09614071b2fed0cf02beadee8072481ba083">
     <copyfile dest="export" src="buildconf/export"/>
   </project>
-  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="46af22c5289206ff69d0153bcb56ea224c93c244"/>
+  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="2262ccfe1793a986c42f729c25640b998924b2f8"/>
   <project name="meta-angstrom.git" path="layers/meta-angstrom" remote="githa" revision="709abee819ee349dab873f6abb02c404b2c65331"/>
   <project name="meta-browser.git" path="layers/meta-browser" remote="githo" revision="ee0d264347ca89efe73788a11f31504d1d42b716"/>
   <project name="meta-freescale-3rdparty.git" path="layers/meta-freescale-3rdparty" remote="githf" revision="1879485e63ce369292c89b5902ff6df13509090b"/>
