@@ -159,6 +159,7 @@ if [ -z `GetCommitSHA1FromTag $TAG_FW` ]
 then 
 	echo "No tag $TAG_FW found for FW, use master"
 	SHA1_FW=`GetCommitSHA1FromTag origin/master`
+	FW_version='master'
 fi
 echo "Checkout fusion_fw_common on commit $SHA1_FW"
 git checkout $SHA1_FW
