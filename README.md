@@ -32,11 +32,20 @@ Install the repo bootstrap binary:
   curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   chmod a+x ~/bin/repo
 ```
+** To use the internal stash repositories**
 Create a directory for your oe-core setup to live in and clone the meta information.
 ```bash
   mkdir oe-core
   cd oe-core
   repo init -u ssh://git@stash.hach.ewqg.com:7999/fcfw/fusion_seacloud_platform.git -b SCR1
+  repo sync
+```
+** To use the public github repositories**
+Create a directory for your oe-core setup to live in and clone the meta information.
+```bash
+  mkdir oe-core
+  cd oe-core
+  repo init -u https://github.com/HachCompany-SC4200/fusion_seacloud_platform.git -b github_publication_SC4200
   repo sync
 ```
 Source the file export to setup the environment. On first invocation this also copies a sample
@@ -55,29 +64,29 @@ Branches are created under the SeaCloud specific layers repositories(meta-seaclo
 
 Work is done on the branches. When the work is done, the modifications on the branches are merged into the SCR1 branch.
 
-Then it is needed to  generate a manifest from what is currently checked out. to do so:
+Then it is needed to generate a manifest from what is currently checked out. To do so:
 ```bash
- cd .repo/manifests
- ```
- if you have to update your local branch of the repository "SeaCloud-paltform'
- ```bash
- git checkout -b my-branch-name
- ```
- then execute
- ```bash
- repo manifest --suppress-upstream-revision -r -o default_tmp.xml
- cp default_tmp.xml default.xml
- cp default_tmp.xml head-default.xml
- rm default_tmp.xml
- git commit -a -m 'description...'
- git push
- ```
+  cd .repo/manifests
+```
+if you have to update your local branch of the repository "SeaCloud-platform'
+```bash
+  git checkout -b my-branch-name
+```
+then execute
+```bash
+  repo manifest --suppress-upstream-revision -r -o default_tmp.xml
+  cp default_tmp.xml default.xml
+  cp default_tmp.xml head-default.xml
+  rm default_tmp.xml
+  git commit -a -m 'description...'
+  git push
+```
+The script *update_manifest.sh* will cover the previous sequence without the git steps.
 
 ### Back to manifest revision
 To reset all the projects/layers back to the manifest revision, use the command :
 ```bash
-repo sync -d
+  repo sync -d
 ```
 It can be useful when swapping between branches etc.
-
 

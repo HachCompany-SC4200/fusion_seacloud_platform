@@ -17,4 +17,6 @@ time bitbake $1 -c populate_sdk
 
 popd > /dev/null
 
+./generate_OSS_notices.sh
+
 ./update_download_mirror.sh
