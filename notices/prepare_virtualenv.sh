@@ -14,4 +14,6 @@ virtualenv -p python3 "${VIRTUALENV_FOLDER}"
 source "${VIRTUALENV_FOLDER}/bin/activate"
 
 echo "Install required modules"
-pip install -r requirements.txt
+# pip install -r requirements.txt can strangly fails due to PATH length limit of #! in shell script
+# Use the proposed workaround to call pip through python interpreter (https://github.com/pypa/virtualenv/issues/596#issuecomment-411485104)
+python3 -m pip install -r requirements.txt
