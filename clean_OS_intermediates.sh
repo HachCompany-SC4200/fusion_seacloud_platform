@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # From .repo/manifests, go back to base folder fusion_seacloud_platform
 pushd ../.. > /dev/null
 

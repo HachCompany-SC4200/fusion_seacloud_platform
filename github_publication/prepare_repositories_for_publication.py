@@ -94,7 +94,7 @@ def get_references_from_manifest(manifest_repo):
 	tree = ET.parse(manifest_filename)
 	root = tree.getroot()
 	# Get original HACH remote URL
-	# Typically : ssh://git@stash.hach.ewqg.com:7999/fcfw
+	# Typically : ssh://git@stash.waterqualitytools.com:7999/fcfw
 	hach_remote = root.find("./remote[@name='hach']")
 	hach_url = hach_remote.attrib["fetch"]
 
@@ -162,11 +162,11 @@ def get_references_from_layer(layer_repo):
 	logging.debug("Search linked repositories in {0}".format(repository_location))
 
 	repo_references = {}
-	logging.debug("Look for usage of hach stash repositories (git@stash.hach.ewqg.com)")
-	result = subprocess.run( shlex.split("grep -R -l 'git@stash.hach.ewqg.com' --exclude-dir='.git' " + repository_location), stdout=subprocess.PIPE, stderr=subprocess.DEVNULL )
+	logging.debug("Look for usage of hach stash repositories (git@stash.waterqualitytools.com)")
+	result = subprocess.run( shlex.split("grep -R -l 'git@stash.waterqualitytools.com' --exclude-dir='.git' " + repository_location), stdout=subprocess.PIPE, stderr=subprocess.DEVNULL )
 	recipe_files=result.stdout.decode('utf-8').splitlines()
 	if recipe_files:
-		print("Identified recipe using hach stash repositories (stash.hach.ewqg.com):")
+		print("Identified recipe using hach stash repositories (stash.waterqualitytools.com):")
 		for file in recipe_files:
 			print("  {0}".format(file))
 
@@ -221,12 +221,12 @@ def update_reference_in_layer(repository_properties, updated_repository_properti
 
 def extract_reference_from_recipe(file):
 	""" Return properties of the reference found in file (url, branch, revision, name) """
-	result = subprocess.run( shlex.split("grep -o 'git://git@stash.hach.ewqg.com[^;]*;' " + '"' + file + '"'), stdout=subprocess.PIPE )
+	result = subprocess.run( shlex.split("grep -o 'git://git@stash.waterqualitytools.com[^;]*;' " + '"' + file + '"'), stdout=subprocess.PIPE )
 	matches=result.stdout.decode('utf-8').strip().splitlines()
 	if len(matches)>1:
 		print("ERROR: too many URL found for this reference to stash in {0} : {1}".format(file, matches))
 		exit(1)
-	# Typically git://git@stash.hach.ewqg.com:7999/fcfw/fusion_fw_common.git
+	# Typically git://git@stash.waterqualitytools.com:7999/fcfw/fusion_fw_common.git
 	url = matches[0].replace(';','').strip()
 
 	result = subprocess.run( shlex.split('grep ^SRCREV "' + file + '"'), stdout=subprocess.PIPE )
@@ -331,7 +331,7 @@ if __name__ == "__main__":
 	tag = args.tag
 	message = args.message
 
-	manifest_properties = {'name':'fusion_seacloud_platform.git','url':'ssh://git@stash.hach.ewqg.com:7999/fcfw', 'revision':tag}
+	manifest_properties = {'name':'fusion_seacloud_platform.git','url':'ssh://git@stash.waterqualitytools.com:7999/fcfw', 'revision':tag}
 
 	print("The tag {0} from platform repository {1} will be cloned for analysis".format(tag, manifest_properties['name']))
 	print("The new commit generated will use the message: '{0}'".format(message))

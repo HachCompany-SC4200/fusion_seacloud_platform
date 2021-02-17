@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 patternTag='^P.*@.*@.*$'
 
 OS_version_file=os_version

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script create an archive of the yocto data (downloads, layers) to be able to rebuild later an image if the sources are not available anymore
 # It creates:
