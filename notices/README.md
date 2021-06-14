@@ -14,7 +14,7 @@ To have all the required dependencies, use the provided virtual environment. The
 
 ### Updating python virtual environment requirements
 During development you can require new python modules. In that case, install them (from an activated virtual environment) with:
->pip install <module name>
+>pip3 install <module name>
 
 When you have all your requirements installed, update the requirements.txt file accordingly. To do it launch:
->pip freeze > requirements.txt
+>pip3 freeze > requirements.txt

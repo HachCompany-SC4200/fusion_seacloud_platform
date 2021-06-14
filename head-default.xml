@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="githa" fetch="http://github.com/Angstrom-distribution" alias="repo"/>
-  <remote name="githf" fetch="http://github.com/Freescale" alias="repo"/>
-  <remote name="githo" fetch="http://github.com/OSSystems" alias="repo"/>
-  <remote name="githq" fetch="http://github.com/meta-qt5" alias="repo"/>
-  <remote name="giths" fetch="http://github.com/morphis" alias="repo"/>
-  <remote name="githt" fetch="http://github.com/watatuki" alias="repo"/>
-  <remote name="hach" fetch="ssh://git@stash.hach.ewqg.com:7999/fcfw" alias="repo"/>
-  <remote name="linaro" fetch="http://git.linaro.org/git-ro/openembedded" alias="repo"/>
-  <remote name="oe" fetch="http://github.com/openembedded" alias="repo"/>
-  <remote name="tdx" fetch="http://git.toradex.com" alias="repo"/>
-  <remote name="yocto" fetch="https://git.yoctoproject.org/git" alias="repo"/>
+  <remote alias="repo" fetch="http://github.com/Angstrom-distribution" name="githa"/>
+  <remote alias="repo" fetch="http://github.com/Freescale" name="githf"/>
+  <remote alias="repo" fetch="http://github.com/OSSystems" name="githo"/>
+  <remote alias="repo" fetch="http://github.com/meta-qt5" name="githq"/>
+  <remote alias="repo" fetch="http://github.com/morphis" name="giths"/>
+  <remote alias="repo" fetch="http://github.com/watatuki" name="githt"/>
+  <remote alias="repo" fetch="ssh://git@stash.hach.ewqg.com:7999/fcfw" name="hach"/>
+  <remote alias="repo" fetch="http://git.linaro.org/git-ro/openembedded" name="linaro"/>
+  <remote alias="repo" fetch="http://github.com/openembedded" name="oe"/>
+  <remote alias="repo" fetch="http://git.toradex.com" name="tdx"/>
+  <remote alias="repo" fetch="https://git.yoctoproject.org/git" name="yocto"/>
   
   <default sync-j="4"/>
   
   <project name="bitbake.git" path="layers/openembedded-core/bitbake" remote="oe" revision="bdf7a362ecdafd47f309b7a21feac4b94624f287"/>
   <project name="fusion_meta-toradex-bsp-common.git" path="layers/fusion_meta-toradex-bsp-common" remote="hach" revision="94ab151a66624dfd84c3311e698930e0304821ab"/>
-  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="351c5dced786dbaf5f3df30e086cfe5addc08ee0">
-    <copyfile src="buildconf/export" dest="export"/>
+  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="8abf3ff02d9390ab24eda6d738d3bfbc98b946e4">
+    <copyfile dest="export" src="buildconf/export"/>
   </project>
-  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="25b3747114044f7408b16b20d5fe99aa2c6e2eb3"/>
+  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="1f2b85c1cdcac43d091424a92310b05754742cdf"/>
   <project name="meta-angstrom.git" path="layers/meta-angstrom" remote="githa" revision="709abee819ee349dab873f6abb02c404b2c65331"/>
   <project name="meta-browser.git" path="layers/meta-browser" remote="githo" revision="ee0d264347ca89efe73788a11f31504d1d42b716"/>
   <project name="meta-freescale-3rdparty.git" path="layers/meta-freescale-3rdparty" remote="githf" revision="1879485e63ce369292c89b5902ff6df13509090b"/>

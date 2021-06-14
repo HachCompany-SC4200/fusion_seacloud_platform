@@ -80,6 +80,7 @@ def checkout_repository(repository_properties):
 	else:
 		print("Checkout repository: {0} ({1}) into {2}".format(repository_properties['name'], repository_properties['revision'], repo_location))
 		repo = Repo(repo_location)
+		repo.remotes.origin.fetch()
 
 	repo.head.reset(index=True, working_tree=True)
 	repo.head.reference = repo.commit(repository_properties["revision"])
@@ -163,7 +164,7 @@ def get_references_from_layer(layer_repo):
 
 	repo_references = {}
 	logging.debug("Look for usage of hach stash repositories (git@stash.waterqualitytools.com)")
-	result = subprocess.run( shlex.split("grep -R -l 'git@stash.waterqualitytools.com' --exclude-dir='.git' " + repository_location), stdout=subprocess.PIPE, stderr=subprocess.DEVNULL )
+	result = subprocess.run( shlex.split("egrep -R -l '(git@stash.waterqualitytools.com|git@stash.hach.ewqg.com)' --exclude-dir='.git' " + repository_location), stdout=subprocess.PIPE, stderr=subprocess.DEVNULL )
 	recipe_files=result.stdout.decode('utf-8').splitlines()
 	if recipe_files:
 		print("Identified recipe using hach stash repositories (stash.waterqualitytools.com):")
@@ -221,7 +222,7 @@ def update_reference_in_layer(repository_properties, updated_repository_properti
 
 def extract_reference_from_recipe(file):
 	""" Return properties of the reference found in file (url, branch, revision, name) """
-	result = subprocess.run( shlex.split("grep -o 'git://git@stash.waterqualitytools.com[^;]*;' " + '"' + file + '"'), stdout=subprocess.PIPE )
+	result = subprocess.run( shlex.split("egrep -o '(git://git@stash.waterqualitytools.com|git://git@stash.hach.ewqg.com)[^;]*;' " + '"' + file + '"'), stdout=subprocess.PIPE )
 	matches=result.stdout.decode('utf-8').strip().splitlines()
 	if len(matches)>1:
 		print("ERROR: too many URL found for this reference to stash in {0} : {1}".format(file, matches))
