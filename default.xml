@@ -14,11 +14,11 @@
   <default sync-j="4" />
   
   <project name="bitbake.git" path="layers/openembedded-core/bitbake" remote="oe" revision="bdf7a362ecdafd47f309b7a21feac4b94624f287" />
-  <project name="fusion_meta-toradex-bsp-common.git" path="layers/fusion_meta-toradex-bsp-common" remote="hach" revision="2dfc4ef0b4c0c761d62b05b885ba69ddd626f17b" />
-  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="955b833d936e4fefa88786d5acb70af27953446e">
+  <project name="fusion_meta-toradex-bsp-common.git" path="layers/fusion_meta-toradex-bsp-common" remote="hach" revision="1bd7e0c90aa5df4b590c9e9d0f90ede4fb0b8a98" />
+  <project name="fusion_seacloud_meta-seacloud-bsp.git" path="layers/meta-seacloud-bsp" remote="hach" revision="60eaea590c775b69fa3e4c64850456843d31f3e9">
     <copyfile dest="export" src="buildconf/export" />
   </project>
-  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="3a434677c5683662ba5a3b7426ec3229c5aa2aef" />
+  <project name="fusion_seacloud_meta-seacloud.git" path="layers/meta-seacloud" remote="hach" revision="4216a3d87c0c658021ff7bdf8351c77825b2854b" />
   <project name="meta-angstrom.git" path="layers/meta-angstrom" remote="githa" revision="709abee819ee349dab873f6abb02c404b2c65331" />
   <project name="meta-browser.git" path="layers/meta-browser" remote="githo" revision="ee0d264347ca89efe73788a11f31504d1d42b716" />
   <project name="meta-freescale-3rdparty.git" path="layers/meta-freescale-3rdparty" remote="githf" revision="1879485e63ce369292c89b5902ff6df13509090b" />
